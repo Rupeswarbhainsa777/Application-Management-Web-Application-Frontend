@@ -1,0 +1,13 @@
+/* Add dark mode support for Menubar */
+.bg-body-tertiary {
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+}
+
+.navbar, .navbar-brand, .nav-link, .form-control {
+  color: var(--text) !important;
+}
+
+.btn-dark, .btn-light {
+  color: var(--btn-text) !important;
+}

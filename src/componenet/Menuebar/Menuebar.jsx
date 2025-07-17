@@ -2,7 +2,7 @@
 
 
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -10,8 +10,10 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { AppContext } from '../../context/AppContext.jsx';
 
 const Menubar = () => {
+    const { darkMode, toggleDarkMode } = useContext(AppContext);
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
@@ -58,6 +60,13 @@ const Menubar = () => {
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
+                    <Button
+                        variant={darkMode ? "dark" : "light"}
+                        onClick={toggleDarkMode}
+                        className="ms-3"
+                    >
+                        {darkMode ? "Light Mode" : "Dark Mode"}
+                    </Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

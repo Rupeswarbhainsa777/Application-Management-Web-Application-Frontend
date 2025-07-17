@@ -7,3 +7,23 @@
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important
 ;
 }
+
+:root {
+  --background: #fff;
+  --foreground: #2c3e50;
+  --text: #555;
+  --btn-bg: #007bff;
+  --btn-hover-bg: #0056b3;
+  --btn-text: #fff;
+}
+
+body.dark-mode {
+  --background: #181a1b;
+  --foreground: #f5f6fa;
+  --text: #c7c7c7;
+  --btn-bg: #222e3c;
+  --btn-hover-bg: #3a4a5a;
+  --btn-text: #fff;
+  background: var(--background);
+  color: var(--text);
+}
