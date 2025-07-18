@@ -6,6 +6,7 @@ import './App.css'
 import Menubar from "./componenet/Menuebar/Menuebar.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import About from "./Pages/About/About.jsx";
+import Addjobs from "./Pages/Addjobs/Addjobs.jsx";
 import { AppProvider } from "./context/AppProvider.jsx";
 import { AppContext } from "./context/AppContext.jsx";
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/add-job" element={<Addjobs />} />
           </Routes>
         </div>
       </Router>
