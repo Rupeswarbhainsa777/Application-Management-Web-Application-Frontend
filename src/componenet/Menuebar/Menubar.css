@@ -1,5 +1,6 @@
 /* Add dark mode support for Menubar */
-.bg-body-tertiary {
+.bg-body-tertiary,
+.navbar.bg-body-tertiary {
   background-color: var(--background) !important;
   color: var(--text) !important;
 }
