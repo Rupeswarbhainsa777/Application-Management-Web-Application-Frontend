@@ -50,6 +50,10 @@ const Menubar = () => {
                             ADDJOB
                         </Nav.Link>
 
+                        <Nav.Link as={Link} to="/dashboard">
+                            Dashboard
+                        </Nav.Link>
+
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control

@@ -1,0 +1,41 @@
+.dashboard {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.overview {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #f5f5f5;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.applications table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.applications th, .applications td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.applications th {
+    background: #4caf50;
+    color: white;
+}
