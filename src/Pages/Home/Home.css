@@ -1,39 +1,82 @@
-.home-container {
-  max-width: 600px;
-  margin: 60px auto;
-  padding: 32px 24px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* Wrapper with gradient background */
+.home-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 20px;
 }
 
+/* Main container */
+.home-container {
+  max-width: 650px;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeInUp 0.8s ease;
+}
+
+/* Title */
 .home-container h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   margin-bottom: 20px;
   color: #2c3e50;
-  font-weight: 700;
+  font-weight: 800;
+  line-height: 1.3;
 }
 
+/* Paragraph */
 .home-container p {
   font-size: 1.2rem;
-  color: #555;
-  line-height: 1.8;
-  margin-bottom: 24px;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
+/* Button */
 .home-container .btn {
-  font-size: 1.1rem;
-  padding: 12px 32px;
-  border-radius: 8px;
-  background-color: #007bff;
-  color: white;
+  font-size: 1.15rem;
+  padding: 14px 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
   text-decoration: none;
+  font-weight: 600;
   display: inline-block;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* Button hover */
 .home-container .btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 86, 179, 0.4);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 30px 20px;
+  }
+  .home-container h1 {
+    font-size: 2rem;
+  }
+  .home-container p {
+    font-size: 1rem;
+  }
 }

@@ -1,68 +1,110 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Table from 'react-bootstrap/Table';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
-import './Addjobs.css';
+import { useState } from "react";
+import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import axios from "axios";
 
 const Addjobs = () => {
+    const [jobData, setJobData] = useState({
+        companyName: "",
+        jobType: "",
+        date: "",
+        companyType: "",
+        status: "",
+    });
+
+    // Handle input change
+    const handleChange = (e) => {
+        setJobData({
+            ...jobData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    // Submit form
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:8089/job/add", jobData, {
+                headers: { "Content-Type": "application/json" },
+            });
+            console.log("Job added successfully:", response.data);
+            alert("Job added successfully!");
+            setJobData({ companyName: "", jobType: "", date: "", companyType: "", status: "" });
+        } catch (error) {
+            console.error("Error adding job:", error);
+            alert("Failed to add job. Check console for details.");
+        }
+    };
+
     return (
         <Container className="my-4">
             <Row className="justify-content-center">
-                <Col md={4}>
-                    <Card className="shadow-lg rounded-3 border-0">
-                        <Card.Img
-                            variant="top"
-                            src="https://via.placeholder.com/300x180"
-                            style={{ objectFit: 'cover', height: '180px' }}
-                        />
-                        <Card.Body>
-                            <Card.Title className="fw-bold text-primary">Frontend Developer</Card.Title>
-                            <Card.Text className="text-muted">
-                                Build modern and responsive user interfaces using React and Bootstrap.
-                            </Card.Text>
-                            <Button variant="primary" className="w-100">
-                                Apply Now
-                            </Button>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
+                <Col md={6}>
+                    <Card className="shadow-lg rounded-3 p-4">
+                        <h3 className="text-center mb-4 text-primary">Add New Job</h3>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Company Name</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="companyName"
+                                    value={jobData.companyName}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </Form.Group>
 
-            <Row className="mt-5">
-                <Col>
-                    <h4 className="mb-3 text-center text-secondary">Applicant List</h4>
-                    <Table striped bordered hover responsive className="shadow-sm rounded">
-                        <thead className="table-primary">
-                        <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Rupeswar</td>
-                            <td>Bhainsa</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td colSpan={2}>Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        </tbody>
-                    </Table>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Job Type</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="jobType"
+                                    value={jobData.jobType}
+                                    onChange={handleChange}
+                                    placeholder="e.g. Full-Time, Part-Time"
+                                    required
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label>Date</Form.Label>
+                                <Form.Control
+                                    type="datetime-local"
+                                    name="date"
+                                    value={jobData.date}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label>Company Type</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="companyType"
+                                    value={jobData.companyType}
+                                    onChange={handleChange}
+                                    placeholder="e.g. Tech, Finance"
+                                    required
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label>Status</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    name="status"
+                                    value={jobData.status}
+                                    onChange={handleChange}
+                                    placeholder="e.g. Active, Closed"
+                                    required
+                                />
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit" className="w-100">
+                                Submit Job
+                            </Button>
+                        </Form>
+                    </Card>
                 </Col>
             </Row>
         </Container>
@@ -70,6 +112,4 @@ const Addjobs = () => {
 };
 
 export default Addjobs;
-
-
 
