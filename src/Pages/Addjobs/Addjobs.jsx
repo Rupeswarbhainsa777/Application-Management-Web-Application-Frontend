@@ -36,25 +36,28 @@ const Addjobs = () => {
     };
 
     return (
-        <Container className="my-4">
+        <Container className="my-5">
             <Row className="justify-content-center">
-                <Col md={6}>
-                    <Card className="shadow-lg rounded-3 p-4">
-                        <h3 className="text-center mb-4 text-primary">Add New Job</h3>
+                <Col md={7} lg={6}>
+                    <Card className="shadow-lg border-0 rounded-4 p-4">
+                        <h3 className="text-center mb-4 fw-bold text-primary">
+                            📝 Add New Job
+                        </h3>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3">
-                                <Form.Label>Company Name</Form.Label>
+                                <Form.Label className="fw-semibold">Company Name</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="companyName"
                                     value={jobData.companyName}
                                     onChange={handleChange}
+                                    placeholder="Enter company name"
                                     required
                                 />
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Job Type</Form.Label>
+                                <Form.Label className="fw-semibold">Job Type</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="jobType"
@@ -66,7 +69,7 @@ const Addjobs = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Date</Form.Label>
+                                <Form.Label className="fw-semibold">Date</Form.Label>
                                 <Form.Control
                                     type="datetime-local"
                                     name="date"
@@ -77,7 +80,7 @@ const Addjobs = () => {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Company Type</Form.Label>
+                                <Form.Label className="fw-semibold">Company Type</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="companyType"
@@ -88,20 +91,28 @@ const Addjobs = () => {
                                 />
                             </Form.Group>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>Status</Form.Label>
-                                <Form.Control
-                                    type="text"
+                            <Form.Group className="mb-4">
+                                <Form.Label className="fw-semibold">Status</Form.Label>
+                                <Form.Select
                                     name="status"
                                     value={jobData.status}
                                     onChange={handleChange}
-                                    placeholder="e.g. Active, Closed"
                                     required
-                                />
+                                >
+                                    <option value="">-- Select Status --</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Closed">Closed</option>
+                                    <option value="Interview Scheduled">Interview Scheduled</option>
+                                    <option value="Offer Received">Offer Received</option>
+                                </Form.Select>
                             </Form.Group>
 
-                            <Button variant="primary" type="submit" className="w-100">
-                                Submit Job
+                            <Button
+                                variant="primary"
+                                type="submit"
+                                className="w-100 fw-semibold py-2 shadow-sm rounded-3"
+                            >
+                                ✅ Submit Job
                             </Button>
                         </Form>
                     </Card>
@@ -112,4 +123,3 @@ const Addjobs = () => {
 };
 
 export default Addjobs;
-

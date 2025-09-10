@@ -6,7 +6,10 @@ const About = () => {
         <div className="about-container">
             <h1>About This Application</h1>
             <p>
-                This Job Application Management web app helps you organize, track, and manage your job applications efficiently. Easily add, view, and update your job search progress all in one place.
+                Welcome to the <strong>Job Application Manager</strong> — your personal assistant
+                for organizing and tracking your job search. This tool allows you to
+                <em> add, update, and monitor</em> all your job applications in one place,
+                helping you stay focused and never miss an opportunity.
             </p>
         </div>
     );
