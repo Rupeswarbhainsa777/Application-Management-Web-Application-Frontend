@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './AllJobs.css'; // Import the CSS file
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
@@ -23,29 +24,44 @@ const AllJobs = () => {
             });
     }, []);
 
-    if (loading) return <p className="text-center">Loading jobs...</p>;
-    if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+    if (loading) return <p className="loading">Loading jobs...</p>;
+    if (error) return <p className="error">Error: {error}</p>;
 
     return (
-        <div className="max-w-4xl mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">All Jobs</h1>
-            {jobs.length === 0 ? (
-                <p>No jobs available.</p>
-            ) : (
-                <ul className="space-y-4">
-                    {jobs.map((job) => (
-                        <li key={job.id} className="border p-4 rounded shadow bg-white">
-                            <h2 className="text-xl font-semibold">{job.companyName}</h2>
-                            <p><strong>Job Type:</strong> {job.jobType}</p>
-                            <p><strong>Date:</strong> {new Date(job.date).toLocaleDateString()}</p>
-                            <p><strong>Company Type:</strong> {job.companyType}</p>
-                            <p><strong>Status:</strong> {job.status}</p>
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className="alljobs-page">
+            <div className="alljobs-container">
+                <h1 className="page-title">Available Job Listings</h1>
+
+                {jobs.length === 0 ? (
+                    <p className="no-jobs">No jobs available.</p>
+                ) : (
+                    <ul className="jobs-grid">
+                        {jobs.map((job) => (
+                            <li key={job.id} className="job-card">
+                                <h2 className="job-title">{job.companyName}</h2>
+                                <div className="job-details">
+                                    <p><span>Job Type:</span> {job.jobType}</p>
+                                    <p><span>Date:</span> {new Date(job.date).toLocaleDateString()}</p>
+                                    <p><span>Company Type:</span> {job.companyType}</p>
+                                    <p>
+                                        <span>Status:</span>{' '}
+                                        <span
+                                            className={`status-badge ${
+                                                job.status === 'Open' ? 'open' : 'closed'
+                                            }`}
+                                        >
+                      {job.status}
+                    </span>
+                                    </p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </div>
     );
 };
 
 export default AllJobs;
+

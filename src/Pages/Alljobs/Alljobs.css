@@ -1,0 +1,137 @@
+/* Full-page wrapper */
+.alljobs-page {
+    min-height: 100vh; /* full page height */
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 15px;
+}
+
+/* Container */
+.alljobs-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Title */
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: center;
+    color: #222;
+}
+
+/* Loading & Error */
+.loading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.error {
+    text-align: center;
+    color: #e63946;
+    font-weight: 600;
+}
+
+.no-jobs {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+}
+
+/* Job Grid */
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Job Card */
+.job-card {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Job Title */
+.job-title {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* Job Details */
+.job-details p {
+    margin: 6px 0;
+    color: #555;
+}
+
+.job-details span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.status-badge.open {
+    background-color: #d1f7d1;
+    color: #207520;
+}
+
+.status-badge.closed {
+    background-color: #fddcdc;
+    color: #a50000;
+}
+
+/* ---------- Responsive Design ---------- */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.6rem;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .page-title {
+        font-size: 1.4rem;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .job-card {
+        padding: 16px;
+    }
+
+    .job-title {
+        font-size: 1.1rem;
+    }
+}
