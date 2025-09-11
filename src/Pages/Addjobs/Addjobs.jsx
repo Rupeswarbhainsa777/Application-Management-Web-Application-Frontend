@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 const Addjobs = () => {
@@ -36,90 +36,110 @@ const Addjobs = () => {
     };
 
     return (
-        <Container className="my-5">
-            <Row className="justify-content-center">
-                <Col md={7} lg={6}>
-                    <Card className="shadow-lg border-0 rounded-4 p-4">
-                        <h3 className="text-center mb-4 fw-bold text-primary">
-                            📝 Add New Job
-                        </h3>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3">
-                                <Form.Label className="fw-semibold">Company Name</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="companyName"
-                                    value={jobData.companyName}
-                                    onChange={handleChange}
-                                    placeholder="Enter company name"
-                                    required
-                                />
-                            </Form.Group>
+        <Container fluid className="p-5 bg-light min-vh-100">
+            <h2 className="text-center mb-5 fw-bold text-primary">📝 Add New Job</h2>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label className="fw-semibold">Job Type</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="jobType"
-                                    value={jobData.jobType}
-                                    onChange={handleChange}
-                                    placeholder="e.g. Full-Time, Part-Time"
-                                    required
-                                />
-                            </Form.Group>
+            <Form onSubmit={handleSubmit}>
+                {/* Company Name + Job Type in same row */}
+                <Row className="mb-4">
+                    <Col md={6}>
+                        <div className="p-3 border rounded-3 bg-white shadow-sm h-100">
+                            <Form.Label className="fw-semibold">🏢 Company Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="companyName"
+                                value={jobData.companyName}
+                                onChange={handleChange}
+                                placeholder="Enter company name"
+                                required
+                            />
+                        </div>
+                    </Col>
+                    <Col md={6}>
+                        <div className="p-3 border rounded-3 bg-white shadow-sm h-100">
+                            <Form.Label className="fw-semibold">💼 Job Type</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="jobType"
+                                value={jobData.jobType}
+                                onChange={handleChange}
+                                placeholder="e.g. Full-Time, Part-Time"
+                                required
+                            />
+                        </div>
+                    </Col>
+                </Row>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label className="fw-semibold">Date</Form.Label>
-                                <Form.Control
-                                    type="datetime-local"
-                                    name="date"
-                                    value={jobData.date}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </Form.Group>
+                {/* Date */}
+                <Row className="mb-4">
+                    <Col>
+                        <div className="p-3 border rounded-3 bg-white shadow-sm">
+                            <Form.Label className="fw-semibold">📅 Date</Form.Label>
+                            <Form.Control
+                                type="datetime-local"
+                                name="date"
+                                value={jobData.date}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                    </Col>
+                </Row>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label className="fw-semibold">Company Type</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="companyType"
-                                    value={jobData.companyType}
-                                    onChange={handleChange}
-                                    placeholder="e.g. Tech, Finance"
-                                    required
-                                />
-                            </Form.Group>
+                {/* Company Type */}
+                <Row className="mb-4">
+                    <Col>
+                        <div className="p-3 border rounded-3 bg-white shadow-sm">
+                            <Form.Label className="fw-semibold">🏭 Company Type</Form.Label>
+                            <Form.Control
+                                type="text"
+                                name="companyType"
+                                value={jobData.companyType}
+                                onChange={handleChange}
+                                placeholder="e.g. Tech, Finance"
+                                required
+                            />
+                        </div>
+                    </Col>
+                </Row>
 
-                            <Form.Group className="mb-4">
-                                <Form.Label className="fw-semibold">Status</Form.Label>
-                                <Form.Select
-                                    name="status"
-                                    value={jobData.status}
-                                    onChange={handleChange}
-                                    required
-                                >
-                                    <option value="">-- Select Status --</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Closed">Closed</option>
-                                    <option value="Interview Scheduled">Interview Scheduled</option>
-                                    <option value="Offer Received">Offer Received</option>
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Button
-                                variant="primary"
-                                type="submit"
-                                className="w-100 fw-semibold py-2 shadow-sm rounded-3"
+                {/* Status */}
+                <Row className="mb-4">
+                    <Col>
+                        <div className="p-3 border rounded-3 bg-white shadow-sm">
+                            <Form.Label className="fw-semibold">📊 Status</Form.Label>
+                            <Form.Select
+                                name="status"
+                                value={jobData.status}
+                                onChange={handleChange}
+                                required
                             >
-                                ✅ Submit Job
-                            </Button>
-                        </Form>
-                    </Card>
-                </Col>
-            </Row>
+                                <option value="">-- Select Status --</option>
+                                <option value="Active">Active</option>
+                                <option value="Closed">Closed</option>
+                                <option value="Interview Scheduled">Interview Scheduled</option>
+                                <option value="Offer Received">Offer Received</option>
+                            </Form.Select>
+                        </div>
+                    </Col>
+                </Row>
+
+                {/* Submit */}
+                <Row>
+                    <Col>
+                        <Button
+                            variant="primary"
+                            type="submit"
+                            className="w-100 fw-semibold py-3 shadow rounded-3"
+                        >
+                            ✅ Submit Job
+                        </Button>
+                    </Col>
+                </Row>
+            </Form>
         </Container>
     );
 };
 
 export default Addjobs;
+
