@@ -132,6 +132,26 @@
     color: #991b1b;
     border: 1px solid #fecaca;
 }
+.job-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #e74c3c;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
 
 /* Animations */
 @keyframes fadeIn {
@@ -149,6 +169,7 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
 
 @media (max-width: 480px) {
     .page-title {

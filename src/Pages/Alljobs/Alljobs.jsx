@@ -6,7 +6,9 @@ const AllJobs = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+    // Fetch jobs
+    const fetchJobs = () => {
+        setLoading(true);
         fetch('http://localhost:8089/job/allJobs')
             .then((res) => {
                 if (!res.ok) throw new Error('Failed to fetch jobs');
@@ -20,7 +22,28 @@ const AllJobs = () => {
                 setError(err.message);
                 setLoading(false);
             });
+    };
+
+    useEffect(() => {
+        fetchJobs();
     }, []);
+
+    // Delete job by id
+    const handleDelete = (id) => {
+        if (!window.confirm('Are you sure you want to delete this job?')) return;
+
+        fetch(`http://localhost:8089/job/delete/${id}`, {
+            method: 'DELETE',
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error('Failed to delete job');
+                // Refresh job list
+                setJobs(jobs.filter((job) => job.id !== id));
+            })
+            .catch((err) => {
+                alert('Error: ' + err.message);
+            });
+    };
 
     return (
         <div className="alljobs-page">
@@ -45,14 +68,23 @@ const AllJobs = () => {
                                             job.status === 'Open' ? 'open' : 'closed'
                                         }`}
                                     >
-                    {job.status}
-                  </span>
+                                        {job.status}
+                                    </span>
                                 </div>
 
                                 <div className="job-details">
                                     <p><span>Job Type:</span> {job.jobType}</p>
                                     <p><span>Date:</span> {new Date(job.date).toLocaleDateString()}</p>
                                     <p><span>Company Type:</span> {job.companyType}</p>
+                                </div>
+
+                                <div className="job-actions">
+                                    <button
+                                        className="delete-btn"
+                                        onClick={() => handleDelete(job.id)}
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
                             </li>
                         ))}
