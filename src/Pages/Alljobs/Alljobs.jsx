@@ -5,6 +5,7 @@ const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchTerm, setSearchTerm] = useState(""); // search input
 
     // Fetch jobs
     const fetchJobs = () => {
@@ -45,21 +46,38 @@ const AllJobs = () => {
             });
     };
 
+    // Filter jobs based on search term
+    const filteredJobs = jobs.filter((job) =>
+        job.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.jobType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.companyType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.status.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="alljobs-page">
             <div className="alljobs-container">
                 <h1 className="page-title">All Applied Jobs</h1>
 
+                {/* 🔍 Search Bar */}
+                <input
+                    type="text"
+                    className="search-input"
+                    placeholder="Search by company, type, or status..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+
                 {loading && <p className="loading">Loading jobs...</p>}
                 {error && <p className="error">Error: {error}</p>}
 
-                {!loading && !error && jobs.length === 0 && (
-                    <p className="no-jobs">No jobs available.</p>
+                {!loading && !error && filteredJobs.length === 0 && (
+                    <p className="no-jobs">No jobs match your search.</p>
                 )}
 
-                {!loading && !error && jobs.length > 0 && (
+                {!loading && !error && filteredJobs.length > 0 && (
                     <ul className="jobs-grid">
-                        {jobs.map((job) => (
+                        {filteredJobs.map((job) => (
                             <li key={job.id} className="job-card">
                                 <div className="job-header">
                                     <h2 className="job-title">{job.companyName}</h2>
