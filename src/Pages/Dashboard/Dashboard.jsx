@@ -38,6 +38,19 @@ const Dashboard = () => {
                         <td>Applied</td>
                         <td>2025-09-05</td>
                     </tr>
+                    <tr>
+                        <td>Amazon</td>
+                        <td>Java Developer</td>
+                        <td>Applied</td>
+                        <td>2025-09-05</td>
+                    </tr>
+                    <tr>
+                        <td>Amazon</td>
+                        <td>Java Developer</td>
+                        <td>Applied</td>
+                        <td>2025-09-05</td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>
