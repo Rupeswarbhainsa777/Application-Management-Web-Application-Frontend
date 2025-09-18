@@ -5,7 +5,11 @@ const AllJobs = () => {
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchTerm, setSearchTerm] = useState(""); // search input
+    const [searchTerm, setSearchTerm] = useState("");
+
+    // For update modal
+    const [isEditing, setIsEditing] = useState(false);
+    const [currentJob, setCurrentJob] = useState(null);
 
     // Fetch jobs
     const fetchJobs = () => {
@@ -38,8 +42,38 @@ const AllJobs = () => {
         })
             .then((res) => {
                 if (!res.ok) throw new Error('Failed to delete job');
-                // Refresh job list
                 setJobs(jobs.filter((job) => job.id !== id));
+            })
+            .catch((err) => {
+                alert('Error: ' + err.message);
+            });
+    };
+
+    // Open update modal
+    const handleEdit = (job) => {
+        setCurrentJob(job);
+        setIsEditing(true);
+    };
+
+    // Handle update form submit
+    const handleUpdateSubmit = (e) => {
+        e.preventDefault();
+
+        fetch(`http://localhost:8089/job/update/${currentJob.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(currentJob),
+        })
+            .then((res) => {
+                if (!res.ok) throw new Error('Failed to update job');
+                return res.json();
+            })
+            .then(() => {
+                setJobs(jobs.map((j) => (j.id === currentJob.id ? currentJob : j)));
+                setIsEditing(false);
+                setCurrentJob(null);
             })
             .catch((err) => {
                 alert('Error: ' + err.message);
@@ -98,6 +132,12 @@ const AllJobs = () => {
 
                                 <div className="job-actions">
                                     <button
+                                        className="edit-btn"
+                                        onClick={() => handleEdit(job)}
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
                                         className="delete-btn"
                                         onClick={() => handleDelete(job.id)}
                                     >
@@ -109,6 +149,76 @@ const AllJobs = () => {
                     </ul>
                 )}
             </div>
+
+            {/* 📝 Update Modal */}
+            {isEditing && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>Edit Job</h2>
+                        <form onSubmit={handleUpdateSubmit} className="update-form">
+                            <label>
+                                Company Name:
+                                <input
+                                    type="text"
+                                    value={currentJob.companyName}
+                                    onChange={(e) =>
+                                        setCurrentJob({ ...currentJob, companyName: e.target.value })
+                                    }
+                                    required
+                                />
+                            </label>
+
+                            <label>
+                                Job Type:
+                                <input
+                                    type="text"
+                                    value={currentJob.jobType}
+                                    onChange={(e) =>
+                                        setCurrentJob({ ...currentJob, jobType: e.target.value })
+                                    }
+                                    required
+                                />
+                            </label>
+
+                            <label>
+                                Company Type:
+                                <input
+                                    type="text"
+                                    value={currentJob.companyType}
+                                    onChange={(e) =>
+                                        setCurrentJob({ ...currentJob, companyType: e.target.value })
+                                    }
+                                    required
+                                />
+                            </label>
+
+                            <label>
+                                Status:
+                                <select
+                                    value={currentJob.status}
+                                    onChange={(e) =>
+                                        setCurrentJob({ ...currentJob, status: e.target.value })
+                                    }
+                                >
+                                    <option value="Open">Open</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </label>
+
+                            <div className="modal-actions">
+                                <button type="submit" className="save-btn">Save</button>
+                                <button
+                                    type="button"
+                                    className="cancel-btn"
+                                    onClick={() => setIsEditing(false)}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
