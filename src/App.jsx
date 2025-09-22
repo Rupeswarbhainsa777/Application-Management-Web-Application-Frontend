@@ -11,6 +11,7 @@ import Alljobs from "./Pages/Alljobs/Alljobs.jsx";
 import { AppProvider } from "./context/AppProvider.jsx";
 import { AppContext } from "./context/AppContext.jsx";
 import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
+import AiSupport from "./Pages/Ai Support/AiSupport.jsx";
 
 function DarkModeBodyEffect() {
   const { darkMode } = useContext(AppContext);
@@ -38,6 +39,7 @@ function App() {
             <Route path="/add-job" element={<Addjobs />} />
             <Route path="/all-jobs" element={<Alljobs />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/aisupport" element={<AiSupport />} />
           </Routes>
         </div>
       </Router>
