@@ -1,95 +1,131 @@
 /* AiSupport.css */
 
 .chat-container {
-    width: 400px;
-    max-width: 90%;
+    width: 420px;
+    max-width: 95%;
     margin: 40px auto;
     background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .chat-title {
-    background: #4a90e2;
+    background: linear-gradient(135deg, #4a90e2, #357ab8);
     color: white;
     text-align: center;
-    padding: 14px;
-    font-size: 18px;
+    padding: 16px;
+    font-size: 20px;
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .chat-box {
     flex: 1;
-    padding: 15px;
+    padding: 16px;
     overflow-y: auto;
-    background: #f9f9f9;
+    background: #f7f9fc;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+}
+
+/* Custom scrollbar */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-box::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 6px;
+}
+.chat-box::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 /* Message bubbles */
 .message {
     max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 18px;
+    padding: 12px 16px;
+    border-radius: 20px;
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.5;
     word-wrap: break-word;
+    animation: fadeInUp 0.3s ease;
 }
 
 .message.user {
     align-self: flex-end;
     background: #4a90e2;
     color: white;
-    border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 6px;
 }
 
 .message.bot {
     align-self: flex-start;
-    background: #e5e5ea;
-    color: #000;
-    border-bottom-left-radius: 4px;
+    background: #e9ecf1;
+    color: #333;
+    border-bottom-left-radius: 6px;
 }
 
 /* Input area */
 .input-area {
     display: flex;
-    border-top: 1px solid #ddd;
-    padding: 10px;
+    border-top: 1px solid #e2e2e2;
+    padding: 12px;
     background: #fff;
+    gap: 8px;
 }
 
 .input-box {
     flex: 1;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 20px;
+    border-radius: 25px;
     outline: none;
     font-size: 14px;
-    margin-right: 8px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-box:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74, 144, 226, 0.3);
 }
 
 .send-btn {
     background: #4a90e2;
     border: none;
     color: white;
-    padding: 10px 16px;
-    border-radius: 20px;
+    padding: 10px 18px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 14px;
-    transition: background 0.3s ease;
+    font-weight: 500;
+    transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .send-btn:hover {
     background: #357ab8;
+    transform: translateY(-1px);
 }
 
 .send-btn:disabled {
-    background: #9bbde7;
+    background: #a7c5ec;
     cursor: not-allowed;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
