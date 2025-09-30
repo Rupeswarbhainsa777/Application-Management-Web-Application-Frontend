@@ -1,8 +1,9 @@
 /* AiSupport.css */
 
 .chat-container {
-    width: 420px;
-    max-width: 95%;
+    width: 70%;
+    max-width: 70%;
+    height: 70vh; /* makes it cover 70% of viewport height */
     margin: 40px auto;
     background: #ffffff;
     border-radius: 16px;
