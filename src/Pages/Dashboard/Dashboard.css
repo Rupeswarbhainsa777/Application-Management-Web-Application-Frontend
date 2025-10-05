@@ -1,122 +1,77 @@
 /* Dashboard Wrapper */
 .dashboard {
-    padding: 40px;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
 }
 
 /* Page Title */
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #1a237e;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+    color: #333;
+    font-size: 2rem;
 }
 
 /* Overview Section */
 .overview {
     display: flex;
-    justify-content: space-around;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .card {
     flex: 1;
-    min-width: 200px;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    font-weight: 600;
+    min-width: 180px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     text-align: center;
-    color: #2c3e50;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(120deg, #42a5f5, #ab47bc, #ef5350);
-    transform: rotate(45deg);
-    opacity: 0.1;
-}
-
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    color: #444;
 }
 
 /* Applications Section */
 .applications {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    backdrop-filter: blur(12px);
-    animation: fadeIn 0.6s ease-in-out;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
 .applications h2 {
-    margin-bottom: 15px;
-    color: #1a237e;
-    font-weight: 600;
-    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.25rem;
 }
 
 /* Table Styling */
 .applications table {
     width: 100%;
     border-collapse: collapse;
-    border-radius: 12px;
-    overflow: hidden;
 }
 
-.applications th, .applications td {
-    padding: 14px 16px;
+.applications th,
+.applications td {
+    padding: 10px;
     text-align: left;
     font-size: 14px;
+    border-bottom: 1px solid #eee;
 }
 
 .applications th {
-    background: linear-gradient(90deg, #42a5f5, #5c6bc0);
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    font-size: 13px;
-}
-
-.applications tr {
-    transition: background 0.3s ease;
-}
-
-.applications tr:hover {
-    background: rgba(66, 165, 245, 0.1);
-}
-
-.applications td {
+    background: #f0f0f0;
+    font-weight: bold;
     color: #333;
-    border-bottom: 1px solid #eee;
 }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .overview {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
 
     .applications table,
@@ -130,15 +85,14 @@ h1 {
     }
 
     .applications tr {
-        margin-bottom: 15px;
-        border-radius: 10px;
+        margin-bottom: 12px;
         background: #fafafa;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        padding: 10px;
+        padding: 8px;
+        border-radius: 6px;
     }
 
     .applications td {
-        padding: 10px;
+        padding: 8px;
         text-align: right;
         position: relative;
         border: none;
@@ -147,18 +101,12 @@ h1 {
     .applications td::before {
         content: attr(data-label);
         position: absolute;
-        left: 15px;
-        font-weight: 600;
-        color: #1a237e;
+        left: 10px;
+        font-weight: bold;
+        color: #333;
     }
 
     .applications th {
         display: none;
     }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
