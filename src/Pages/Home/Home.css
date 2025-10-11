@@ -8,6 +8,13 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Center container at 60% width */
+.home-container {
+  width: 60%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .home-header {
   text-align: center;
   margin-bottom: 50px;
@@ -29,7 +36,6 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
   width: 100%;
-  max-width: 1000px;
 }
 
 .home-card {
