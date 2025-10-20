@@ -1,0 +1,9 @@
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.main-content {
+    padding-top: 80px; /* space for navbar */
+}

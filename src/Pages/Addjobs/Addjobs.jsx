@@ -11,7 +11,7 @@ const Addjobs = () => {
         status: "",
     });
 
-    // Handle input change
+    // Handle input
     const handleChange = (e) => {
         setJobData({
             ...jobData,
