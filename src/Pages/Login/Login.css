@@ -3,17 +3,17 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #0d1117;
+    background-color: #ffffff; /* Changed to white */
     font-family: "Poppins", sans-serif;
 }
 
 .login-card {
-    background-color: #161b22;
+    background-color: #f9f9f9; /* Light card background */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     width: 350px;
-    color: white;
+    color: #333; /* Dark text for readability */
 }
 
 .login-title {
@@ -21,7 +21,7 @@
     margin-bottom: 20px;
     font-size: 1.8rem;
     font-weight: bold;
-    color: #58a6ff;
+    color: #007bff; /* Blue accent */
 }
 
 .form-group {
@@ -33,25 +33,26 @@
 .form-group label {
     margin-bottom: 8px;
     font-size: 0.9rem;
-    color: #c9d1d9;
+    color: #555;
 }
 
 .form-group input {
     padding: 10px;
-    border: 1px solid #30363d;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #0d1117;
-    color: white;
+    background-color: #ffffff;
+    color: #333;
     outline: none;
 }
 
 .form-group input:focus {
-    border-color: #58a6ff;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
 }
 
 .login-btn {
     width: 100%;
-    background-color: #238636;
+    background-color: #007bff;
     color: white;
     padding: 10px;
     border: none;
@@ -62,5 +63,5 @@
 }
 
 .login-btn:hover {
-    background-color: #2ea043;
+    background-color: #0056b3;
 }
