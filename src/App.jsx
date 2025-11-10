@@ -14,6 +14,7 @@ import AiSupport from "./Pages/Ai Support/AiSupport.jsx";
 import { AppProvider } from "./context/AppProvider.jsx";
 import { AppContext } from "./context/AppContext.jsx";
 import Login from "./Pages/Login/Login.jsx";
+import Registration from "./Pages/Reg/Registration.jsx";
 
 /* 🌙 Syncs Dark Mode Context with Body Class */
 function DarkModeBodyEffect() {
@@ -43,6 +44,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/aisupport" element={<AiSupport />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/reg" element={<Registration />} />
             </Routes>
           </main>
         </Router>
