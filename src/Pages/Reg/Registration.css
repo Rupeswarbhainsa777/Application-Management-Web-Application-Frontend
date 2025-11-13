@@ -3,20 +3,20 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #0d1117;
+    background-color: #ffffff; /* Changed to white */
     font-family: "Poppins", sans-serif;
 }
 
 .registration-card {
-    background-color: #161b22;
+    background-color: #f9f9f9; /* Light gray for contrast */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle dark shadow */
     width: 400px;
 }
 
 .registration-title {
-    color: #fff;
+    color: #222; /* Dark text */
     text-align: center;
     margin-bottom: 25px;
 }
@@ -26,7 +26,7 @@
 }
 
 .registration-form label {
-    color: #ddd;
+    color: #333; /* Dark label text */
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
@@ -35,20 +35,20 @@
 .registration-form input {
     width: 100%;
     padding: 10px;
-    border: none;
+    border: 1px solid #ccc; /* Visible border on light background */
     border-radius: 8px;
-    background-color: #21262d;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
 }
 
 .registration-form input:focus {
-    outline: 1px solid #58a6ff;
+    outline: 1px solid #58a6ff; /* Blue focus border */
 }
 
 .register-btn {
     width: 100%;
     padding: 10px;
-    background-color: #238636;
+    background-color: #238636; /* Green button */
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -63,11 +63,15 @@
 
 .login-link {
     text-align: center;
-    color: #aaa;
+    color: #555;
     margin-top: 15px;
 }
 
 .login-link a {
-    color: #58a6ff;
+    color: #0066cc;
     text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }
