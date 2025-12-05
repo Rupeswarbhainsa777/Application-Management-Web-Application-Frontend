@@ -1,29 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important
-;
+}
+
+body {
+  font-family: 'Outfit', 'Jost', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
 }
 
 :root {
-  --background: #fff;
-  --foreground: #2c3e50;
-  --text: #555;
-  --btn-bg: #007bff;
-  --btn-hover-bg: #0056b3;
-  --btn-text: #fff;
+  --primary: #4f46e5; /* Indigo 600 */
+  --primary-hover: #4338ca; /* Indigo 700 */
+  --secondary: #ec4899; /* Pink 500 */
+  --background: #f8fafc; /* Slate 50 */
+  --surface: #ffffff;
+  --text: #1e293b; /* Slate 800 */
+  --text-light: #64748b; /* Slate 500 */
+  --border: #e2e8f0; /* Slate 200 */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius: 1rem;
 }
 
 body.dark-mode {
-  --background: #181a1b;
-  --foreground: #f5f6fa;
-  --text: #c7c7c7;
-  --btn-bg: #222e3c;
-  --btn-hover-bg: #3a4a5a;
-  --btn-text: #fff;
-  background: var(--background);
-  color: var(--text);
+  --primary: #6366f1; /* Indigo 500 */
+  --primary-hover: #818cf8; /* Indigo 400 */
+  --secondary: #f472b6; /* Pink 400 */
+  --background: #0f172a; /* Slate 900 */
+  --surface: #1e293b; /* Slate 800 */
+  --text: #f1f5f9; /* Slate 100 */
+  --text-light: #94a3b8; /* Slate 400 */
+  --border: #334155; /* Slate 700 */
 }

@@ -3,78 +3,167 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f9fafc;
-  padding: 60px 20px;
-  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top right, var(--primary), transparent 40%),
+              radial-gradient(circle at bottom left, var(--secondary), transparent 40%),
+              var(--background);
+  background-blend-mode: screen; /* Or overlay depending on dark mode */
+  padding: 80px 20px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Center container at 60% width */
-.home-container {
-  width: 60%;
-  max-width: 1000px;
-  margin: 0 auto;
+/* Dark mode adjustment for background */
+body.dark-mode .home-wrapper {
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(244, 114, 182, 0.15), transparent 40%),
+              var(--background);
+  background-blend-mode: normal;
 }
 
 .home-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  max-width: 800px;
+  z-index: 1;
+  animation: fadeInDown 0.8s ease-out;
 }
 
 .home-header h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #222;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .home-header p {
-  color: #555;
-  line-height: 1.6;
+  color: var(--text-light);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .home-sections {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
   width: 100%;
+  max-width: 1200px;
+  z-index: 1;
+  padding: 0 20px;
 }
 
 .home-card {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  padding: 30px 25px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 40px 30px;
+  text-align: left;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .home-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.home-card:hover::before {
+  transform: scaleX(1);
 }
 
 .home-card h2 {
-  color: #333;
-  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 1.8rem;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.home-card:hover .icon {
+  transform: scale(1.2) rotate(5deg);
 }
 
 .home-card p {
-  color: #666;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
+  color: var(--text-light);
+  font-size: 1rem;
+  margin-bottom: 25px;
+  flex-grow: 1;
 }
 
 .btn {
-  display: inline-block;
-  background-color: #007bff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
   color: #fff;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius: 50px; /* Pill shape */
   text-decoration: none;
-  transition: background 0.3s ease;
-  font-weight: 500;
+  transition: all 0.3s ease;
+  font-weight: 600;
   font-size: 0.95rem;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .home-wrapper {
+    padding: 40px 15px;
+  }
+  
+  .home-sections {
+    grid-template-columns: 1fr;
+  }
 }

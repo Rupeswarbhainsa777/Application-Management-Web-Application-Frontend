@@ -15,25 +15,25 @@ const Home = () => {
 
             <div className="home-sections">
                 <div className="home-card">
-                    <h2>📝 Add Job</h2>
+                    <h2><span className="icon">📝</span> Add Job</h2>
                     <p>Add a new job application to your tracker easily.</p>
                     <Link to="/add-job" className="btn">Go to Add Job</Link>
                 </div>
 
                 <div className="home-card">
-                    <h2>ℹ️ About</h2>
+                    <h2><span className="icon">ℹ️</span> About</h2>
                     <p>Learn more about how this tool helps you manage your job search.</p>
                     <Link to="/about" className="btn">View About Page</Link>
                 </div>
 
                 <div className="home-card">
-                    <h2>🤖 AI Assistant</h2>
+                    <h2><span className="icon">🤖</span> AI Assistant</h2>
                     <p>Get personalized job insights and resume suggestions with AI.</p>
                     <Link to="/aiSupport" className="btn">Try AI Assistant</Link>
                 </div>
 
                 <div className="home-card">
-                    <h2>📋 All Jobs</h2>
+                    <h2><span className="icon">📋</span> All Jobs</h2>
                     <p>View all your saved job applications in one dashboard.</p>
                     <Link to="/all-jobs" className="btn">View All Jobs</Link>
                 </div>
