@@ -1,4 +1,136 @@
+/* Wrapper matching Home/About pages */
 .addjobs-wrapper {
-  width: 10%;         /* only cover 70% of the screen */
-  max-width: 1000px;  /* optional limit for large screens */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top right, var(--primary), transparent 40%),
+              radial-gradient(circle at bottom left, var(--secondary), transparent 40%),
+              var(--background);
+  background-blend-mode: screen;
+  padding: 40px 20px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body.dark-mode .addjobs-wrapper {
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(244, 114, 182, 0.15), transparent 40%),
+              var(--background);
+  background-blend-mode: normal;
+}
+
+/* Header Styling */
+.addjobs-header {
+  text-align: center;
+  margin-bottom: 40px;
+  z-index: 1;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.addjobs-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+/* Card Container */
+.addjobs-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xl);
+  padding: 40px;
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.addjobs-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Form Styles Override */
+.form-label {
+  color: var(--text);
+  font-weight: 600 !important;
+  margin-bottom: 8px;
+}
+
+.form-control, .form-select {
+  background-color: var(--background) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 8px !important;
+  padding: 12px 15px !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+  background-color: var(--surface) !important;
+}
+
+/* Custom Input Container */
+.input-group-custom {
+  background: var(--surface-light);
+  padding: 5px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.input-group-custom:focus-within {
+  background: var(--surface);
+}
+
+/* Button Styling */
+.btn-primary-custom {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+  background: linear-gradient(135deg, var(--primary-hover), var(--secondary));
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .addjobs-wrapper {
+    padding: 20px 15px;
+  }
+  .addjobs-card {
+    padding: 25px;
+  }
 }

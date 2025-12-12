@@ -27,57 +27,98 @@ const Dashboard = () => {
 
     // Stats calculation
     const totalApplications = jobs.length;
-    const interviews = jobs.filter(job => job.status?.toLowerCase() === "interview").length;
-    const offers = jobs.filter(job => job.status?.toLowerCase() === "offer").length;
-    const rejected = jobs.filter(job => job.status?.toLowerCase() === "rejected").length;
+    const interviews = jobs.filter(job => job.status?.toLowerCase().includes("interview")).length;
+    const offers = jobs.filter(job => job.status?.toLowerCase().includes("offer")).length;
+    const rejected = jobs.filter(job => job.status?.toLowerCase().includes("closed") || job.status?.toLowerCase().includes("rejected")).length;
 
-    if (loading) return <div className="dashboard"><h2>Loading...</h2></div>;
-    if (error) return <div className="dashboard"><h2>Error: {error}</h2></div>;
+    const getStatusClass = (status) => {
+        if (!status) return "";
+        const s = status.toLowerCase();
+        if (s.includes("interview")) return "status-interview";
+        if (s.includes("offer")) return "status-offer";
+        if (s.includes("closed") || s.includes("rejected")) return "status-closed";
+        if (s.includes("active")) return "status-active";
+        return "status-active"; // default
+    };
+
+    if (loading) return (
+        <div className="dashboard-wrapper">
+            <h2 style={{ color: 'var(--text)' }}>Loading...</h2>
+        </div>
+    );
+    
+    if (error) return (
+        <div className="dashboard-wrapper">
+            <h2 style={{ color: 'var(--primary)' }}>Error: {error}</h2>
+        </div>
+    );
 
     return (
-        <div className="dashboard">
-            <h1>Job Application Dashboard</h1>
+        <div className="dashboard-wrapper">
+            <div className="dashboard-header">
+                <h1>Job Application Dashboard</h1>
+                <p style={{ color: 'var(--text-light)', marginTop: '10px' }}>Overview of your opportunities</p>
+            </div>
 
             {/* Overview Section */}
-            <div className="overview">
-                <div className="card">Total Applications: {totalApplications}</div>
-                <div className="card">Interviews: {interviews}</div>
-                <div className="card">Offers: {offers}</div>
-                <div className="card">Rejected: {rejected}</div>
+            <div className="stats-container">
+                <div className="stat-card">
+                    <div className="stat-number">{totalApplications}</div>
+                    <div className="stat-label">Total Applications</div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-number">{interviews}</div>
+                    <div className="stat-label">Interviews</div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-number">{offers}</div>
+                    <div className="stat-label">Offers</div>
+                </div>
+                <div className="stat-card">
+                    <div className="stat-number">{rejected}</div>
+                    <div className="stat-label">Closed/Rejected</div>
+                </div>
             </div>
 
             {/* Application List */}
-            <div className="applications">
+            <div className="applications-container">
                 <h2>My Applications</h2>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Type</th>
-                        <th>Status</th>
-                        <th>Date Applied</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {jobs.length > 0 ? (
-                        jobs.map((job, index) => (
-                            <tr key={index}>
-                                <td>{job.companyName}</td>
-                                <td>{job.jobType}</td>
-                                <td>{job.status}</td>
-                                <td>{job.date}</td>
-                            </tr>
-                        ))
-                    ) : (
+                <div className="table-responsive">
+                    <table className="dashboard-table">
+                        <thead>
                         <tr>
-                            <td colSpan="4">No job applications found</td>
+                            <th>Company</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Date Applied</th>
                         </tr>
-                    )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {jobs.length > 0 ? (
+                            jobs.map((job, index) => (
+                                <tr key={index}>
+                                    <td><strong>{job.companyName}</strong></td>
+                                    <td>{job.jobType}</td>
+                                    <td>
+                                        <span className={`status-badge ${getStatusClass(job.status)}`}>
+                                            {job.status}
+                                        </span>
+                                    </td>
+                                    <td>{new Date(job.date).toLocaleDateString()}</td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="4" style={{ textAlign: 'center', padding: '30px' }}>No job applications found</td>
+                            </tr>
+                        )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
 };
+
 
 export default Dashboard;

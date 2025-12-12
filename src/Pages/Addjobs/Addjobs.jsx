@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 const Addjobs = () => {
@@ -36,17 +36,18 @@ const Addjobs = () => {
     };
 
     return (
-        <Container fluid className="p-5 bg-light min-vh-100 d-flex justify-content-center">
-            {/* Wrapper limited to 70% width */}
-            <div className="addjobs-wrapper w-70 bg-white p-5 rounded-4 shadow-lg">
-                <h2 className="text-center mb-5 fw-bold text-primary">📝 Add New Job</h2>
+        <div className="addjobs-wrapper">
+            <div className="addjobs-header">
+                <h2>Add New Job</h2>
+                <p style={{ color: 'var(--text-light)' }}>Create a new opportunity record</p>
+            </div>
 
+            <div className="addjobs-card">
                 <Form onSubmit={handleSubmit}>
-                    {/* Company Name + Job Type */}
                     <Row className="mb-4">
                         <Col md={6}>
-                            <div className="p-3 border rounded-3 bg-light shadow-sm h-100">
-                                <Form.Label className="fw-semibold">🏢 Company Name</Form.Label>
+                            <Form.Group className="mb-3">
+                                <Form.Label>🏢 Company Name</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="companyName"
@@ -55,11 +56,11 @@ const Addjobs = () => {
                                     placeholder="Enter company name"
                                     required
                                 />
-                            </div>
+                            </Form.Group>
                         </Col>
                         <Col md={6}>
-                            <div className="p-3 border rounded-3 bg-light shadow-sm h-100">
-                                <Form.Label className="fw-semibold">💼 Job Type</Form.Label>
+                            <Form.Group className="mb-3">
+                                <Form.Label>💼 Job Type</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="jobType"
@@ -68,15 +69,14 @@ const Addjobs = () => {
                                     placeholder="e.g. Full-Time, Part-Time"
                                     required
                                 />
-                            </div>
+                            </Form.Group>
                         </Col>
                     </Row>
 
-                    {/* Date */}
                     <Row className="mb-4">
-                        <Col>
-                            <div className="p-3 border rounded-3 bg-light shadow-sm">
-                                <Form.Label className="fw-semibold">📅 Date</Form.Label>
+                        <Col md={6}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>📅 Date</Form.Label>
                                 <Form.Control
                                     type="datetime-local"
                                     name="date"
@@ -84,15 +84,11 @@ const Addjobs = () => {
                                     onChange={handleChange}
                                     required
                                 />
-                            </div>
+                            </Form.Group>
                         </Col>
-                    </Row>
-
-                    {/* Company Type */}
-                    <Row className="mb-4">
-                        <Col>
-                            <div className="p-3 border rounded-3 bg-light shadow-sm">
-                                <Form.Label className="fw-semibold">🏭 Company Type</Form.Label>
+                        <Col md={6}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>🏭 Company Type</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="companyType"
@@ -101,15 +97,14 @@ const Addjobs = () => {
                                     placeholder="e.g. Tech, Finance"
                                     required
                                 />
-                            </div>
+                            </Form.Group>
                         </Col>
                     </Row>
 
-                    {/* Status */}
                     <Row className="mb-4">
                         <Col>
-                            <div className="p-3 border rounded-3 bg-light shadow-sm">
-                                <Form.Label className="fw-semibold">📊 Status</Form.Label>
+                            <Form.Group className="mb-3">
+                                <Form.Label>📊 Status</Form.Label>
                                 <Form.Select
                                     name="status"
                                     value={jobData.status}
@@ -122,25 +117,20 @@ const Addjobs = () => {
                                     <option value="Interview Scheduled">Interview Scheduled</option>
                                     <option value="Offer Received">Offer Received</option>
                                 </Form.Select>
-                            </div>
+                            </Form.Group>
                         </Col>
                     </Row>
 
-                    {/* Submit */}
-                    <Row>
-                        <Col>
-                            <Button
-                                variant="primary"
-                                type="submit"
-                                className="w-100 fw-semibold py-3 shadow rounded-3"
-                            >
-                                ✅ Submit Job
-                            </Button>
-                        </Col>
-                    </Row>
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        className="btn-primary-custom"
+                    >
+                        Submit Job
+                    </Button>
                 </Form>
             </div>
-        </Container>
+        </div>
     );
 };
 
