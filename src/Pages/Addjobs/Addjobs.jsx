@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
+import "./Addjobs.css";
 
 const Addjobs = () => {
     const [jobData, setJobData] = useState({
