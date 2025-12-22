@@ -46,6 +46,11 @@ const Login = () => {
                     <button type="submit" className="login-btn">
                         Login
                     </button>
+                    
+                    <div className="login-footer">
+                        <a href="#" className="forgot-password">Forgot Password?</a>
+                        <p className="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+                    </div>
                 </form>
             </div>
         </div>
